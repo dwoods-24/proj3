@@ -21,33 +21,39 @@ int DisjointSetByRankWPC::Union(int s1, int s2)
 {
   int p, c;
 
-  if (links[s1] != -1 || links[s2] != -1) {
+  if (links[s1] != -1 || links[s2] != -1)
+  {
     cerr << "Must call union on a set, and not just an element.\n";
     exit(1);
   }
 
-  if (ranks[s1] > ranks[s2]) {
+  if (ranks[s1] > ranks[s2])
+  {
     p = s1;
     c = s2;
-  } else {
+  }
+  else
+  {
     p = s2;
     c = s1;
   }
-  
+
   links[c] = p;
-  if (ranks[p] == ranks[c]) ranks[p]++;
+  if (ranks[p] == ranks[c])
+    ranks[p]++;
   return p;
 }
 
 int DisjointSetByRankWPC::Find(int e)
 {
-  int p, c;   // P is the parent, c is the child.
+  int p, c; // P is the parent, c is the child.
 
   /* Find the root of the tree, but along the way, set
      the parents' links to the children. */
 
   c = -1;
-  while (links[e] != -1) {
+  while (links[e] != -1)
+  {
     p = links[e];
     links[e] = c;
     c = e;
@@ -59,10 +65,11 @@ int DisjointSetByRankWPC::Find(int e)
 
   p = e;
   e = c;
-  while (e != -1) {
+  while (e != -1)
+  {
     c = links[e];
     links[e] = p;
-    e =c;
+    e = c;
   }
   return p;
 }
@@ -73,14 +80,17 @@ void DisjointSetByRankWPC::Print()
 
   printf("\n");
   printf("Node:  ");
-  for (i = 0; i < links.size(); i++) printf("%3d", i);  
+  for (i = 0; i < links.size(); i++)
+    printf("%3d", i);
   printf("\n");
 
   printf("Links: ");
-  for (i = 0; i < links.size(); i++) printf("%3d", links[i]);  
+  for (i = 0; i < links.size(); i++)
+    printf("%3d", links[i]);
   printf("\n");
 
   printf("Ranks: ");
-  for (i = 0; i < links.size(); i++) printf("%3d", ranks[i]);  
+  for (i = 0; i < links.size(); i++)
+    printf("%3d", ranks[i]);
   printf("\n\n");
 }

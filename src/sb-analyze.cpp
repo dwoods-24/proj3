@@ -1,13 +1,13 @@
-#include "disjoint_set.hpp"
+#include "disjoint.h" // Assuming this is the correct header file
 #include <iostream>
+
 using namespace std;
-using plank::Disjoint_Set;
 
 int main()
 {
-  Disjoint_Set d;
+  // Declare the pointer to the DisjointSet class from the appropriate namespace
+  DisjointSetByRankWPC *set = new DisjointSetByRankWPC(5);
 
-  (void) d;
   cout << "This program doesn't do anything yet.\n";
   return 0;
 }
